@@ -22,7 +22,7 @@ const MovieList = ({ showSchedule }) => {
     const getMovies = async () => {
       try {
         const responseData = await sendShowMoviesRequest(
-          "http://localhost:3000/api/movies"
+          "/movies"
         );
         setMovies(responseData.movies);
       } catch (err) {
@@ -45,6 +45,15 @@ const MovieList = ({ showSchedule }) => {
     }
   }, [selectedFilter, movies]);
 
+  // Callback function to update status in the movies array
+  const handleStatusChange = (movieId, newStatus) => {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.id === movieId ? { ...movie, status: newStatus } : movie
+      )
+    );
+  };
+
   return (
     <React.Fragment>
       {/* Filter dropdown */}
@@ -62,6 +71,7 @@ const MovieList = ({ showSchedule }) => {
           id={movie.id}
           movie={movie}
           showSchedule={showSchedule}
+          onStatusChange={handleStatusChange} // Pass the callback function
         ></MovieItem>
       ))}
     </React.Fragment>

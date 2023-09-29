@@ -14,7 +14,7 @@ function PromoSection() {
     const fetchPromotions = async () => {
         try {
             const responseData = await sendRequest(
-                "http://localhost:3000/api/promotions"
+                "/promotions"
             )
             setPromotionList(responseData.promotions)
         } catch (error) {
