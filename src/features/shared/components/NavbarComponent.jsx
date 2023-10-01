@@ -40,7 +40,7 @@ function NavbarComponent() {
     // Call a function to fetch search results from the backend
     fetchSearchResults(newQuery);
   };
-
+  
   const fetchSearchResults = async (searchQuery) => {
     try {
       const responseData = await sendShowMoviesRequest(
