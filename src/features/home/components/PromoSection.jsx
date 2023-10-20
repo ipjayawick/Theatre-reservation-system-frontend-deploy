@@ -14,7 +14,7 @@ function PromoSection() {
     const fetchPromotions = async () => {
         try {
             const responseData = await sendRequest(
-                "/promotions"
+                import.meta.env.VITE_REACT_APP_BASE_URL+"/promotions"
             )
             setPromotionList(responseData.promotions)
         } catch (error) {
